@@ -1,0 +1,15 @@
+nav {
+  font-size: 18px;
+  text-align: right;
+  padding: 10px;
+  max-width: 100%;
+  background-color: black;
+}
+
+nav a {
+  color: black;
+  border: 2px solid magenta;
+  border-radius: 4px;
+  padding: 3px;
+  background-color: white;
+}

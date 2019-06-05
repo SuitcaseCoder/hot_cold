@@ -2,24 +2,25 @@ import React from 'react';
 
 import Header from './header';
 import Card from './card';
+import StatusSection from './statusSection';
 
 export default class Game extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props);
       this.state = {
-        usedNumbers: [],
+        guesses: [],
         feedback: 'Pick a number, any number',
         correctAnswer: Math.floor(Math.random()*100)+1
-      }
+      };
     }
 
 
   restartGame(){
     this.setState({
-      usedNumbers: [],
+      guesses: [],
       feedback: 'Pick a number, any number',
       correctAnswer: Math.floor(Math.random()*100)+1
-    })
+    });
   }
 
   makeGuess(guess){
@@ -36,18 +37,20 @@ export default class Game extends React.Component{
     feedback = 'Cold';
   } else if (difference >= 1){
     feedback = 'Hot';
+  } else {
+    feedback = 'You got it!';
   }
 
   this.setState({
     feedback,
-    usedNumbers: [...this.state.usedNumbers]
+    guesses: [...this.state.guesses, guess]
   });
   }
 
 
   render(){
-    const { feedback, usedNumbers } = this.state;
-    const guesscounter = usedNumbers.length;
+    const { feedback, guesses } = this.state;
+    const guessCounter = guesses.length;
 
     return(
       <div>
@@ -55,7 +58,12 @@ export default class Game extends React.Component{
           onRestartGame={() => this.restartGame()}
         />
         <main role="main">
-          <Card />
+          <Card
+            feedback={feedback}
+            guessCounter={guessCounter}
+            onMakeGuess={guess => this.makeGuess(guess)}
+          />
+          <StatusSection guesses={guesses} />
         </main>
       </div>
     )

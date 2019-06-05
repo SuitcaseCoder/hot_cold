@@ -9,8 +9,8 @@ export default function Card(props){
   const { feedback, guessCounter } = props;
   return (
     <div className="card">
-      </Feedback feedback={feedback} guessCounter={guessCounter} />
-      </Form
+      <Feedback feedback={feedback} guessCounter={guessCounter} />
+      <Form
         onMakeGuess={guess=> props.onMakeGuess(guess)}
       />
     </div>

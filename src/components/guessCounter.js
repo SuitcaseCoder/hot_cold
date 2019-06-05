@@ -1,12 +1,13 @@
 import React from 'react';
 
-import './guessConter.css';
+import './guessCounter.css';
 
-export default function GuessCounter(){
+export default function GuessCounter(props){
+
   const guessCount count={props.guesses.length}
   return(
-    <div className="guessCounter">
-      < guessCounter count={props.guesses.length} />
+    <div className="guessCounter" id="guessCounter">
+      You've made <span id="count">{props.guessCounter}</span> guesses!
     </div>
   )
 }
