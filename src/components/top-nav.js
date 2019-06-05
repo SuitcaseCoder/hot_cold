@@ -12,6 +12,7 @@ export default function TopNav(props){
         onClick={()=> props.onRestartGame()}
       >
       + New Game
+      </a>
     </nav>
   )
 }

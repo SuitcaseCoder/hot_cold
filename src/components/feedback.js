@@ -14,8 +14,9 @@ export default function Feedback(props){
     <h2
       key={key}
       id="feedback"
+      role="status"
     >
-    {props.feedback} {guessAgain}
+    {props.feedback}
     </h2>
   )
 }

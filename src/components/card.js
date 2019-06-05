@@ -5,13 +5,11 @@ import Form from './form';
 
 import './card.css';
 
-export defaut function Card(){
+export default function Card(props){
   const { feedback, guessCounter } = props;
   return (
     <div className="card">
-      </Feedback
-        feedback={feedback} guessCounter={guessCounter}
-      />
+      </Feedback feedback={feedback} guessCounter={guessCounter} />
       </Form
         onMakeGuess={guess=> props.onMakeGuess(guess)}
       />

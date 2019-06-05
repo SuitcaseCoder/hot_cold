@@ -1,18 +1,18 @@
 import React from 'react';
 
 import Header from './header';
-import Card from '/card';
+import Card from './card';
 
 export default class Game extends React.Component{
   constructor(props){
-    super(props){
+    super(props);
       this.state = {
         usedNumbers: [],
         feedback: 'Pick a number, any number',
         correctAnswer: Math.floor(Math.random()*100)+1
-      };
+      }
     }
-  }
+
 
   restartGame(){
     this.setState({
@@ -24,7 +24,10 @@ export default class Game extends React.Component{
 
   makeGuess(guess){
     guess = parseInt(guess,10);
-  }
+    if (isNaN(guess)){
+      this.setState({ feedback: 'Please enter a valid number' });
+      return;
+    }
 
   const difference = Math.abs(guess - this.state.correctAnswer);
 
@@ -39,8 +42,9 @@ export default class Game extends React.Component{
     feedback,
     usedNumbers: [...this.state.usedNumbers]
   });
+  }
 
-  
+
   render(){
     const { feedback, usedNumbers } = this.state;
     const guesscounter = usedNumbers.length;
