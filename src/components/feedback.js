@@ -2,11 +2,20 @@ import React from 'react';
 
 import './feedback.css';
 
-export default function Feedback(){
-  const feedback = '';
+export default function Feedback(props){
+  const key = props.guessCounter;
+
+  // let guessAgain;
+  // if (key !== 0){
+  //   guessAgain = <span className
+  // }
+
   return (
-    <div className="feedback">
-     {feedback}
-    </div>
+    <h2
+      key={key}
+      id="feedback"
+    >
+    {props.feedback} {guessAgain}
+    </h2>
   )
 }

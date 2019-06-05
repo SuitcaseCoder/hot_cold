@@ -1,19 +1,20 @@
 import React from 'react';
 
 import Feedback from './feedback';
-
 import Form from './form';
-
-import GuessCounter from './GuessCounter';
 
 import './card.css';
 
 export defaut function Card(){
+  const { feedback, guessCounter } = props;
   return (
     <div className="card">
-      <h2>Hot or Cold</h2>
-      </Feedback />
-      </Form />
+      </Feedback
+        feedback={feedback} guessCounter={guessCounter}
+      />
+      </Form
+        onMakeGuess={guess=> props.onMakeGuess(guess)}
+      />
     </div>
   );
 }

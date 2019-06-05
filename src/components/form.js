@@ -2,17 +2,39 @@ import React from 'react';
 
 import './form.css';
 
-export default function Form(){
-  return (
-    <form onSubmit={e => e.preventDefault()}>
-          <label htmlFor="guess">Guess</label>
+export default class Form extends React.Component{
+  onSubmit(e){
+    e.preventDefault();
+
+    if (this.props.onMakeGuess){
+      const value = this.input.value;
+      this.props.onMakeGuess(value);
+    }
+    this.input.value='';
+    this.input.focus();
+  }
+
+  render(){
+    return (
+      <form onSubmit={e => this.onSubmit(e)}>
           <input
-            aria-controls="guessCounter"
-            type="guess"
-            id="guess"
-            name="guess"
-            placeholder="3"
+            type="number"
+            name="userGuess"
+            classname="text"
+            min="1"
+            max="100"
+            ref={input => (this.input = input)}
+            required
           />
-        </form>
-  )
+          <button
+            type="submit"
+            name="submit"
+            id="guessButton"
+            className="button"
+          >
+          guessCounter
+          </button>
+      </form>
+    )
+  }
 }
